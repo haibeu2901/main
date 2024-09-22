@@ -1,53 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./img/logo.png" />
+    <title>Kentucky Fried Chicken</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <!-- logo -->
+    <div>
+      <img class="logo" src="../bailam/img/logo.png" alt="kfclogo" />
+    </div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hai's First HTML Page</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
+    <!-- header -->
+    <div>
+      <h1 class="header">KFC</h1>
+    </div>
 
-<body>
-    <header>
-        <h1>Welcome to Hai HTML Page</h1>
-    </header>
+    <!-- navbar -->
+    <div>
+      <a class="navbar" href="#gioithieu">Giới thiệu</a>
+      <br />
+      <a class="navbar" href="#phattrien">Phát triển</a>
+      <br />
+      <a class="navbar" href="./gifts.html">Đi tới trang Tin tức</a>
+      <br />
+      <a class="navbar" href="https://kfcvietnam.com.vn/vi/khuyen-mai.html"
+        >Đi tới trang Khuyến mãi</a
+      >
+    </div>
 
-    <main>
-        <section>
-            <h2>About This Page</h2>
-            <p>This page demonstrates the use of semantic HTML elements.</p>
-        </section>
+    <!-- Gioi thieu -->
+    <div class="gioithieu" id="gioithieu">
+      <h1>Giới thiệu KFC</h1>
+      <p>
+        KFC là cụm từ viết tắt của Kentucky Fried Chicken - Gà Rán Kentucky, một
+        trong các thương hiệu thuộc Tập đoàn Yum Brands Inc (Hoa Kỳ). KFC chuyên
+        về các sản phẩm gà rán và nướng, với các món ăn kèm theo và các loại
+        sandwiches chế biến từ thịt gà tươi. Hiện nay đang có hơn 20.000 nhà
+        hàng KFC tại 109 quốc gia và vùng lãnh thổ trên toàn thế giới.
+      </p>
+      <p>
+        <b
+          ><i
+            >KFC nổi tiếng thế giới với công thức chế biến gà rán truyền thống
+            Original Recipe, được tạo bởi cùng một công thức pha trộn bí mật 11
+            loại thảo mộc và gia vị khác nhau do Đại tá Harland Sanders hoàn
+            thiện hơn nửa thế kỷ trước.</i
+          ></b
+        >
+        Ngoài thực đơn gà rán, KFC còn đa dạng hóa sản phẩm tạo nên thực đơn vô
+        cùng phong phú dành cho người tiêu dùng trên toàn thế giới có thể thưởng
+        thức hơn 300 món ăn khác nhau từ món gà nướng tại thị trường Việt Nam
+        cho tới sandwich cá hồi tại Nhật Bản.
+      </p>
+      <img src="./img/about-pic-1.png" alt="kfcpic1" />
+    </div>
 
-        <section>
-            <h2>Things I Love</h2>
-            <ul>
-                <li>Coding</li>
-                <li>Learning</li>
-                <li>Traveling</li>
-            </ul>
-        </section>
+    <!-- Phat trien -->
+    <div class="phattrien" id="phattrien">
+      <h1>CÁC CỘT MỐC PHÁT TRIỂN NHÀ HÀNG ĐẦU TIÊN TẠI CÁC TỈNH THÀNH</h1>
+      <ul>
+        <li>Tháng 12/1997 - TP.HCM</li>
+        <li>Tháng 06/2006 - Hà Nội</li>
+        <li>Tháng 08/2006 - Hải Phòng & Cần Thơ</li>
+        <li>Tháng 07/2007 - Đồng Nai – Biên Hòa</li>
+        <li>Tháng 01/2008 - Vũng Tàu</li>
+        <li>Tháng 05/2008 - Huế</li>
+        <li>Tháng 11/2009 - Đà Nẵng</li>
+        <img src="..//bailam/img/about-pic-3.png" alt="kfcpic3" />
+      </ul>
+    </div>
 
-        <section>
-            <h2>Images I Like</h2>
-            <figure>
-                <img src="https://www.usnews.com/object/image/00000186-7a58-d975-aff7-fffbc8910000/iguazu-falls-stock.jpg?update-time=1677089883729&size=responsive970" alt="A beautiful landscape">
-                <figcaption>A beautiful landscape</figcaption>
-            </figure>
-            <figure>
-                <img src="https://images.pexels.com/photos/7613/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600" alt="A city skyline">
-                <figcaption>A city skyline</figcaption>
-            </figure>
-            <figure>
-                <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/379419066.jpg?k=1bcb2e0bfc8914fbc17c90afdd99db4f3fe5e786774af6e69fbaca4c73ea4d67&o=&hp=1" alt="A serene beach">
-                <figcaption>A serene beach</figcaption>
-            </figure>
-        </section>
-
-        <footer>
-            <p>For more information, visit <a href="https://support.google.com/google-ads/answer/14095?hl=en" target="_blank">Google Support Website</a>.</p>
-        </footer>
-    </main>
-</body>
-
+    <!-- Menu -->
+    <div class="menu">
+      <h1>Bảng Giá Nước đi kèm của KFC</h1>
+      <table class="menu__table">
+        <thead>
+          <th class="table__name" colspan="2">Name</th>
+          <th>Type</th>
+          <th>Price</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="greentea" rowspan="2" colspan="2">Green Tea</td>
+            <td>Hot</td>
+            <td rowspan="2">25.000vnd</td>
+          </tr>
+          <tr>
+            <td>Cold</td>
+          </tr>
+          <tr>
+            <td class="blacktea" rowspan="2" colspan="2">Black Tea</td>
+            <td>Hot</td>
+            <td rowspan="2">28.000vnd</td>
+          </tr>
+          <tr>
+            <td>Cold</td>
+          </tr>
+          <tr>
+            <td class="olongtea" id="olongtea" rowspan="2" colspan="2">
+              Olong Tea
+            </td>
+            <td>Hot</td>
+            <td rowspan="2">28.000vnd</td>
+          </tr>
+          <tr>
+            <td>Cold</td>
+          </tr>
+          <tr>
+            <td class="fruit" rowspan="3">Fruit Tea</td>
+            <td>Lemon Tea</td>
+            <td rowspan="3">Cold (Only)</td>
+            <td>30.000vnd</td>
+          </tr>
+          <tr>
+            <td>Apple Tea</td>
+            <td rowspan="2">35.000vnd</td>
+          </tr>
+          <tr>
+            <td>Peach Tea</td>
+          </tr>
+          <tr>
+            <td class="milktea" rowspan="3">Milk Tea</td>
+            <td>Green Milk Tea</td>
+            <td rowspan="3">Hot</td>
+            <td>27.000vnd</td>
+          </tr>
+          <tr>
+            <td>Black Milk Tea</td>
+            <td>30.000vnd</td>
+          </tr>
+          <tr>
+            <td>Olong Milk Tea</td>
+            <td>32.000vnd</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
 </html>
