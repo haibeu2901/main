@@ -1,2 +1,0 @@
-# courseraHtmlPage
-Coursera HTML course
