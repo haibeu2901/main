@@ -9,9 +9,9 @@
 <body>
     <h1>Player Management System</h1>
     <div>
-        <button id="showPlayerListButton">Show Player List</button>
-        <button id="addPlayerButton">Add New Player</button>
-        <button id="updatePlayerButton">Update Player</button>
+        <button id="showPlayerListButton" onclick="showPlayerList()">Show Player List</button>
+        <button id="addPlayerButton" onclick="toggleAddPlayerForm()">Add New Player</button>
+        <button id="updatePlayerButton" onclick="toggleUpdatePlayerForm()">Update Player</button>
     </div>
 
     <div id="playerListSection" style="display: none;">
@@ -27,15 +27,13 @@
                     <th>Note</th>
                 </tr>
             </thead>
-            <tbody id="playerList">
-                <!-- Player data will be populated here -->
-            </tbody>
+            <tbody id="playerList"></tbody>
         </table>
     </div>
 
     <div id="addPlayerSection" style="display: none;">
         <h2>Add New Player</h2>
-        <form id="addPlayerForm">
+        <form id="addPlayerForm" onsubmit="addPlayer(event)">
             <input type="text" placeholder="ID" id="id" required>
             <input type="text" placeholder="Real Name" id="realName" required>
             <input type="number" placeholder="Shirt Number" id="shirtNumber" required>
@@ -48,7 +46,7 @@
 
     <div id="updatePlayerSection" style="display: none;">
         <h2>Update Player</h2>
-        <form id="updatePlayerForm">
+        <form id="updatePlayerForm" onsubmit="updatePlayer(event)">
             <input type="text" placeholder="ID or Shirt Number" id="updateIdOrShirtNumber" required>
             <input type="text" placeholder="New Real Name" id="updateRealName" required>
             <input type="number" placeholder="New Shirt Number" id="updateShirtNumber" required>
@@ -60,8 +58,87 @@
     </div>
 
     <script>
-        // Placeholder for Java interaction, as JavaScript is not used in this context.
-        // You will need to implement the Java back-end to handle the functionality.
+        function showPlayerList() {
+            fetch('PlayerServlet?action=show')
+                .then(response => response.json())
+                .then(data => {
+                    const playerList = document.getElementById('playerList');
+                    playerList.innerHTML = '';
+                    data.forEach(player => {
+                        playerList.innerHTML += `
+                            <tr>
+                                <td>${player.id}</td>
+                                <td>${player.realName}</td>
+                                <td>${player.shirtNumber}</td>
+                                <td>${player.shirtName}</td>
+                                <td>${player.size}</td>
+                                <td>${player.note}</td>
+                            </tr>
+                        `;
+                    });
+                    document.getElementById('playerListSection').style.display = 'block';
+                });
+        }
+
+        function toggleAddPlayerForm() {
+            document.getElementById('addPlayerSection').style.display = 'block';
+            document.getElementById('updatePlayerSection').style.display = 'none';
+        }
+
+        function toggleUpdatePlayerForm() {
+            document.getElementById('updatePlayerSection').style.display = 'block';
+            document.getElementById('addPlayerSection').style.display = 'none';
+        }
+
+        function addPlayer(event) {
+            event.preventDefault();
+            const playerData = {
+                id: document.getElementById('id').value,
+                realName: document.getElementById('realName').value,
+                shirtNumber: document.getElementById('shirtNumber').value,
+                shirtName: document.getElementById('shirtName').value,
+                size: document.getElementById('size').value,
+                note: document.getElementById('note').value
+            };
+
+            fetch('PlayerServlet?action=add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(playerData)
+            }).then(response => response.json())
+              .then(result => {
+                  alert(result.message);
+                  document.getElementById('addPlayerForm').reset();
+                  showPlayerList();
+              });
+        }
+
+        function updatePlayer(event) {
+            event.preventDefault();
+            const updateData = {
+                idOrShirtNumber: document.getElementById('updateIdOrShirtNumber').value,
+                realName: document.getElementById('updateRealName').value,
+                shirtNumber: document.getElementById('updateShirtNumber').value,
+                shirtName: document.getElementById('updateShirtName').value,
+                size: document.getElementById('updateSize').value,
+                note: document.getElementById('updateNote').value
+            };
+
+            fetch('PlayerServlet?action=update', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(updateData)
+            }).then(response => response.json())
+              .then(result => {
+                  alert(result.message);
+                  document.getElementById('updatePlayerForm').reset();
+                  showPlayerList();
+              });
+        }
     </script>
 </body>
 </html>
