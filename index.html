@@ -9,10 +9,31 @@
 <body>
     <h1>Player Management System</h1>
     <div>
-        <h2>Player List</h2>
-        <pre id="playerList"></pre>
+        <button id="showPlayerListButton">Show Player List</button>
+        <button id="addPlayerButton">Add New Player</button>
+        <button id="updatePlayerButton">Update Player</button>
     </div>
-    <div>
+
+    <div id="playerListSection" style="display: none;">
+        <h2>Player List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Real Name</th>
+                    <th>Shirt Number</th>
+                    <th>Shirt Name</th>
+                    <th>Size</th>
+                    <th>Note</th>
+                </tr>
+            </thead>
+            <tbody id="playerList">
+                <!-- Player data will be populated here -->
+            </tbody>
+        </table>
+    </div>
+
+    <div id="addPlayerSection" style="display: none;">
         <h2>Add New Player</h2>
         <form id="addPlayerForm">
             <input type="text" placeholder="ID" id="id" required>
@@ -24,22 +45,23 @@
             <button type="submit">Add Player</button>
         </form>
     </div>
-    <div>
+
+    <div id="updatePlayerSection" style="display: none;">
         <h2>Update Player</h2>
         <form id="updatePlayerForm">
-            <input type="text" placeholder="ID" id="updateId" required>
-            <input type="text" placeholder="Real Name" id="updateRealName" required>
-            <input type="number" placeholder="Shirt Number" id="updateShirtNumber" required>
-            <input type="text" placeholder="Shirt Name" id="updateShirtName" required>
-            <input type="text" placeholder="Size" id="updateSize" required>
-            <input type="text" placeholder="Note" id="updateNote">
+            <input type="text" placeholder="ID or Shirt Number" id="updateIdOrShirtNumber" required>
+            <input type="text" placeholder="New Real Name" id="updateRealName" required>
+            <input type="number" placeholder="New Shirt Number" id="updateShirtNumber" required>
+            <input type="text" placeholder="New Shirt Name" id="updateShirtName" required>
+            <input type="text" placeholder="New Size" id="updateSize" required>
+            <input type="text" placeholder="New Note" id="updateNote">
             <button type="submit">Update Player</button>
         </form>
     </div>
-    <button id="quitButton">Quit</button>
 
     <script>
-        // JavaScript is not allowed, this is just a placeholder
+        // Placeholder for Java interaction, as JavaScript is not used in this context.
+        // You will need to implement the Java back-end to handle the functionality.
     </script>
 </body>
 </html>
