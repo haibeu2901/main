@@ -7,10 +7,11 @@ public class PlayerManagementSystem {
 
     public static void main(String[] args) {
         loadPlayers();
+
+        // Simulated interaction loop (you'd implement an actual web server interaction)
         Scanner scanner = new Scanner(System.in);
-        
         while (true) {
-            System.out.println("1. Print Player List");
+            System.out.println("1. Show Player List");
             System.out.println("2. Add New Player");
             System.out.println("3. Update Player");
             System.out.println("4. Quit");
@@ -55,7 +56,10 @@ public class PlayerManagementSystem {
         if (playerList.isEmpty()) {
             System.out.println("No players found.");
         } else {
-            playerList.forEach(System.out::println);
+            System.out.printf("%-10s %-15s %-15s %-15s %-10s %-10s%n", "ID", "Real Name", "Shirt Number", "Shirt Name", "Size", "Note");
+            System.out.println("-----------------------------------------------------------------");
+            playerList.forEach(player -> System.out.printf("%-10s %-15s %-15d %-15s %-10s %-10s%n",
+                    player.getId(), player.getRealName(), player.getShirtNumber(), player.getShirtName(), player.getSize(), player.getNote()));
         }
     }
 
@@ -66,13 +70,13 @@ public class PlayerManagementSystem {
             System.out.println("Player with this ID already exists.");
             return;
         }
-        
+
         System.out.print("Enter Real Name: ");
         String realName = scanner.nextLine();
         System.out.print("Enter Shirt Number: ");
         int shirtNumber = scanner.nextInt();
         scanner.nextLine(); // Consume newline
-        
+
         if (playerList.stream().anyMatch(p -> p.getShirtNumber() == shirtNumber)) {
             System.out.println("Player with this shirt number already exists.");
             return;
@@ -92,10 +96,13 @@ public class PlayerManagementSystem {
     }
 
     private static void updatePlayer(Scanner scanner) {
-        System.out.print("Enter ID of the player to update: ");
-        String id = scanner.nextLine();
+        System.out.print("Enter ID or Shirt Number of the player to update: ");
+        String input = scanner.nextLine();
         
-        Player player = playerList.stream().filter(p -> p.getId().equals(id)).findFirst().orElse(null);
+        Player player = playerList.stream()
+            .filter(p -> p.getId().equals(input) || String.valueOf(p.getShirtNumber()).equals(input))
+            .findFirst().orElse(null);
+        
         if (player == null) {
             System.out.println("Player not found.");
             return;
@@ -106,8 +113,8 @@ public class PlayerManagementSystem {
         System.out.print("Enter new Shirt Number: ");
         int shirtNumber = scanner.nextInt();
         scanner.nextLine(); // Consume newline
-        
-        if (playerList.stream().anyMatch(p -> p.getShirtNumber() == shirtNumber && !p.getId().equals(id))) {
+
+        if (playerList.stream().anyMatch(p -> p.getShirtNumber() == shirtNumber && !p.getId().equals(player.getId()))) {
             System.out.println("Player with this shirt number already exists.");
             return;
         }
@@ -163,6 +170,10 @@ class Player {
 
     public int getShirtNumber() {
         return shirtNumber;
+    }
+
+    public String getRealName() {
+        return realName;
     }
 
     public void setRealName(String realName) {
