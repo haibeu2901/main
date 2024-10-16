@@ -1,1 +1,3 @@
 P001,Doan Duc Hai,11,Nhim,M,testing
+1,John Doe,10,Home,Medium,First Player
+2,Jane Smith,11,Away,Large,Second Player
